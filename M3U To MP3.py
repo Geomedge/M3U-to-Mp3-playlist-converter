@@ -9,15 +9,11 @@ import webbrowser
 import threading
 import re
 from tkinter import filedialog
-from PIL import Image
 import sys
 #Menu GUI
 
 text = """V1.0:
 - Released Program
-V1.1:
-- Fixed initial bugs
-
 
 Thank You For Supporting My Program!
 """
