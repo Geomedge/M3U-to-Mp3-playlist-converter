@@ -9,7 +9,6 @@ import webbrowser
 import threading
 import re
 from tkinter import filedialog
-from PIL import Image
 import sys
 #Menu GUI
 
