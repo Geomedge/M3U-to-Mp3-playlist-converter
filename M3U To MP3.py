@@ -542,20 +542,21 @@ def basic_colour_settings():
     entry6.config(width = menu_len)
     canvas1.create_window(375, 75, window=entry6)
 
-#    title3 = tk.Label(confirm, text='Background of buttons', bg = theme1, fg = theme2)
-#    title3.config(font=('none 9 bold'))
-#    canvas1.create_window(375, 125, window=title3)
+    title3 = tk.Label(confirm, text='Background of buttons', bg = theme1, fg = theme2)
+    title3.config(font=('none 9 bold'))
+    canvas1.create_window(375, 125, window=title3)
 
-#    entry7 = tk.OptionMenu(confirm, selected_option3, *options)
-#    entry7.config(width=25)
-#    canvas1.create_window(375, 150, window=entry7)
+    entry7 = tk.OptionMenu(confirm, selected_option3, *options)
+    entry7.config(width = menu_len)
+    canvas1.create_window(375, 150, window=entry7)
 
-#    title4 = tk.Label(confirm, text='Text Colour of buttons', bg = theme1, fg = theme2)
-#    title4.config(font=('none 9 bold'))
-#    canvas1.create_window(250, 210, window=title4)
+    title4 = tk.Label(confirm, text='Text Colour of buttons', bg = theme1, fg = theme2)
+    title4.config(font=('none 9 bold'))
+    canvas1.create_window(125, 125, window=title4)
 
-#    entry8 = tk.OptionMenu(confirm, selected_option4, *options)
-#    canvas1.create_window(250, 240, window=entry8)
+    entry8 = tk.OptionMenu(confirm, selected_option4, *options)
+    entry8.config(width = menu_len)
+    canvas1.create_window(125, 150, window=entry8)
 
 
 
@@ -788,8 +789,10 @@ def converter():
                 c_progress = i/a
                 c_progresss = c_progress*100
                 c_progresss = round(c_progresss, 1)
+                if c_progresss > 100:
+                    c_progresss = 100
                 progressl.config(text=f"Current Progress : {c_progresss}%")
-                progress.step(c_progress)
+                progress1.set(c_progresss)
                 line = line.strip()
                 if line and not line.startswith('#'):
                     directory = os.path.dirname(file_path)
@@ -817,7 +820,8 @@ def converter():
     b1 = tk.Button(root, text='Convert M3U To Mp3!', command=threading.Thread(target = convert).start, bg = theme3, fg = theme4, font=('helvetica', 9, 'bold'))
     b1.pack(side='top', anchor='center', pady=20)
 
-    progress = ttk.Progressbar()
+    progress1 = tk.IntVar()
+    progress = ttk.Progressbar(variable=progress1)
     progress.pack(anchor="s", side=tk.BOTTOM, fill="x")
     
     progressl = tk.Label(root, text="Progress : 0.0%", bg = theme1, fg = theme2, font=('Segoe UI', 12))
@@ -900,7 +904,7 @@ def menu():
     canvas1.pack()
 
     label1 = tk.Label(menu, text='MP3 Converter By Geomedge', bg = theme1, fg = theme2)
-    label1.config(font=(Title))
+    label1.config(font=("Segoe UI", "18", "bold"))
     canvas1.create_window(200, 25, window=label1)
 
     button1 = tk.Button(menu, text='MP3 Converter', command=lambda:[menu.destroy(), converter()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
