@@ -728,10 +728,10 @@ def converter():
     root.eval('tk::PlaceWindow . centre')
     root.title("MP3 Converter")
     root.configure(bg = theme1)
-    root.geometry("600x400")
+    root.geometry("600x450")
 
     l1 = tk.Label(root, text='MP3 Converter', bg = theme1, fg = theme2)
-    l1.config(font=('none 18 bold'))
+    l1.config(font=("Segoe UI", "18", "bold"))
     l1.pack(anchor="nw",side=tk.TOP, padx=5, pady=5)
 
 
@@ -750,7 +750,7 @@ def converter():
     b3 = tk.Button(root, text='Select File', command=b, bg = theme3, fg = theme4, font=('helvetica', 9, 'bold'), width=25)
     b3.pack(side='top', anchor='center', pady=5)
 
-    l5 = tk.Label(root, text="NO PATH SELECTED", font="none 9 bold", bg = theme1, fg = theme2)
+    l5 = tk.Label(root, text="NO PATH SELECTED", font=("Segoe UI", "9"), bg = theme1, fg = theme2)
     l5.pack(side='top', anchor='center', pady=5)
     
 
@@ -769,19 +769,31 @@ def converter():
     b4 = tk.Button(root, text='Select Folder', command=c, bg = theme3, fg = theme4, font=('helvetica', 9, 'bold'), width=25)
     b4.pack(side='top', anchor='center', pady=5)
 
-    l8 = tk.Label(root, text="NO PATH SELECTED", font="none 9 bold", bg = theme1, fg = theme2)
+    l8 = tk.Label(root, text="NO PATH SELECTED", font=("Segoe UI", "9"), bg = theme1, fg = theme2)
     l8.pack(side='top', anchor='center', pady=5)
 
+
+
     def convert():
-        global erorrs
-        errors = 0
         notcopied = save_path + "/Not-copied.txt"
         file = open(notcopied, "wb")
         file.write("Not Copied \n".encode('utf-8', 'ignore'))
         file.close()
         os.makedirs(save_path, exist_ok=True)
+        i = 1
+        global errors
+        errors = 0
+        with open(file_path, 'r', encoding="utf8") as file:
+            a = len(file.readlines())
+        file.close()
         with open(file_path, 'r', encoding="utf8") as file:
             for line in file:
+                i += 1
+                c_progress = i/a
+                c_progresss = c_progress*100
+                c_progresss = round(c_progresss, 1)
+                progressl.config(text=f"Current Progress : {c_progresss}%")
+                progress.set(c_progress)
                 line = line.strip()
                 if line and not line.startswith('#'):
                     directory = os.path.dirname(file_path)
@@ -802,11 +814,18 @@ def converter():
                         line = line + "\n"
                         file.write(line.encode('utf-8', 'ignore'))
                         file.close()
-        messagebox.showinfo("Completed Task!", f"Errors During Completing Task : {errors}")
+            messagebox.showinfo("Completed Task!", f"Errors During Completing Task : {errors}")
+                    
 
     
     b1 = tk.Button(root, text='Convert M3U To Mp3!', command=threading.Thread(target = convert).start, bg = theme3, fg = theme4, font=('helvetica', 9, 'bold'))
     b1.pack(side='top', anchor='center', pady=20)
+
+    progress = ttk.Progressbar()
+    progress.pack(anchor="s", side=tk.BOTTOM, fill="x")
+    
+    progressl = tk.Label(root, text="Progress : 0.0%", bg = theme1, fg = theme2, font=('Segoe UI', 12))
+    progressl.pack(anchor="sw",side=tk.BOTTOM)
 
     b7 = tk.Button(root, text='Back', command=lambda:[root.destroy(), menu()], bg=theme3, fg=theme4, font=('helvetica', 9, 'bold'), width=10, height=1)
     b7.pack(anchor="sw", side=tk.LEFT, padx=5, pady=10)
@@ -814,7 +833,10 @@ def converter():
     l2 = tk.Label(root, text='Made By Geomedge', bg = theme1, fg = theme2)
     l2.config(font=('helvetica', 9))
     l2.pack(anchor="se",side=tk.RIGHT, padx=5, pady=10)
+
     root.mainloop()
+
+    
 
 
 #settings
