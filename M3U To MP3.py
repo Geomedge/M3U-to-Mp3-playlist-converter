@@ -727,19 +727,18 @@ def converter():
     root= tk.Tk()
     root.eval('tk::PlaceWindow . centre')
     root.title("MP3 Converter")
-    
-    canvas1 = tk.Canvas(root, width=800, height=405, relief='raised', bg = theme1)
-    canvas1.pack()
+    root.configure(bg = theme1)
+    root.geometry("600x400")
 
     l1 = tk.Label(root, text='MP3 Converter', bg = theme1, fg = theme2)
     l1.config(font=('none 18 bold'))
-    canvas1.create_window(400, 25, window=l1)
+    l1.pack(anchor="nw",side=tk.TOP, padx=5, pady=5)
 
 
 #LOAD Files
 
     l2 = tk.Label(root, text='Select M3U File:', font="none 12 bold", bg = theme1, fg = theme2)
-    canvas1.create_window(400, 70, window=l2)
+    l2.pack(side='top', anchor='center', pady=5)
 
     def b():
         global file_path
@@ -748,17 +747,17 @@ def converter():
         text = "Selected Directory" + file_path
         l5.config(text=text)
         
-    button3 = tk.Button(root, text='Select File', command=b, bg = theme3, fg = theme4, font=('helvetica', 9, 'bold'), width=25)
-    canvas1.create_window(400, 100, window=button3)
+    b3 = tk.Button(root, text='Select File', command=b, bg = theme3, fg = theme4, font=('helvetica', 9, 'bold'), width=25)
+    b3.pack(side='top', anchor='center', pady=5)
 
     l5 = tk.Label(root, text="NO PATH SELECTED", font="none 9 bold", bg = theme1, fg = theme2)
-    canvas1.create_window(400, 130, window=l5)
+    l5.pack(side='top', anchor='center', pady=5)
     
 
 #SAVE Files
 
     l7 = tk.Label(root, text='Select Where To Save MP3 Files:', font="none 12 bold", bg = theme1, fg = theme2)
-    canvas1.create_window(400, 150, window=l7)
+    l7.pack(side='top', anchor='center', pady=5)
 
     def c():
         global save_path
@@ -767,11 +766,11 @@ def converter():
         textl = "Selected Directory : " + save_path
         l8.config(text=textl)
         
-    button4 = tk.Button(root, text='Select Folder', command=c, bg = theme3, fg = theme4, font=('helvetica', 9, 'bold'), width=25)
-    canvas1.create_window(400, 180, window=button4)
+    b4 = tk.Button(root, text='Select Folder', command=c, bg = theme3, fg = theme4, font=('helvetica', 9, 'bold'), width=25)
+    b4.pack(side='top', anchor='center', pady=5)
 
     l8 = tk.Label(root, text="NO PATH SELECTED", font="none 9 bold", bg = theme1, fg = theme2)
-    canvas1.create_window(400, 205, window=l8)
+    l8.pack(side='top', anchor='center', pady=5)
 
     def convert():
         global erorrs
@@ -806,16 +805,15 @@ def converter():
         messagebox.showinfo("Completed Task!", f"Errors During Completing Task : {errors}")
 
     
-    button1 = tk.Button(root, text='Convert M3U To Mp3!', command=threading.Thread(target = convert).start, bg = theme3, fg = theme4, font=('helvetica', 9, 'bold'))
-    canvas1.create_window(400, 300, window=button1)
+    b1 = tk.Button(root, text='Convert M3U To Mp3!', command=threading.Thread(target = convert).start, bg = theme3, fg = theme4, font=('helvetica', 9, 'bold'))
+    b1.pack(side='top', anchor='center', pady=20)
 
-    button7 = tk.Button(root, text='Back', command=lambda:[root.destroy(), menu()], bg=theme3, fg=theme4, font=('helvetica', 9, 'bold'), width=10, height=1)
-    canvas1.create_window(50, 380, window=button7)
+    b7 = tk.Button(root, text='Back', command=lambda:[root.destroy(), menu()], bg=theme3, fg=theme4, font=('helvetica', 9, 'bold'), width=10, height=1)
+    b7.pack(anchor="sw", side=tk.LEFT, padx=5, pady=10)
 
     l2 = tk.Label(root, text='Made By Geomedge', bg = theme1, fg = theme2)
     l2.config(font=('helvetica', 9))
-    canvas1.create_window(740, 390, window=l2)
-
+    l2.pack(anchor="se",side=tk.RIGHT, padx=5, pady=10)
     root.mainloop()
 
 
