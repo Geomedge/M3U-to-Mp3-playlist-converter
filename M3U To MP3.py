@@ -789,7 +789,7 @@ def converter():
                 c_progresss = c_progress*100
                 c_progresss = round(c_progresss, 1)
                 progressl.config(text=f"Current Progress : {c_progresss}%")
-                progress.set(c_progress)
+                progress.step(c_progress)
                 line = line.strip()
                 if line and not line.startswith('#'):
                     directory = os.path.dirname(file_path)
