@@ -14,9 +14,6 @@ import sys
 
 text = """V1.0:
 - Released Program
-V1.1:
-- Fixed initial bugs
-
 
 Thank You For Supporting My Program!
 """
