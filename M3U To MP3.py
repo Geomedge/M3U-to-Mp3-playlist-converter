@@ -12,18 +12,21 @@ from tkinter import filedialog
 import sys
 #Menu GUI
 
+#Getting Rid Of Changelog
 text = """V1.0:
 - Released Program
 
 Thank You For Supporting My Program!
 """
-incompatible = []
+
+
 
 #Saves Me The hassle of changing the version number each time separately!
-Version = "V1.01"
-last_update = 'Last Updated : 15/03/2025'
+Version = "V1.02"
+last_update = 'Last Updated : 16/03/2025'
 #Empty Variables
 path_list = []
+incompatible = []
 #This just checks if files exists and if not - recreates them
 path_start = os.path.expanduser("~")
 path_mid = r"\Documents\Geomedge.inc\MP3 Converter"
@@ -41,6 +44,8 @@ if existing == True:
     print("Pass", file)
 else:
     os.mkdir(file)
+#Working On Combining Some Of The Files And Removing Changelog
+#path_end = [r"\Theme.txt",r"\Font.txt"] <-- New Code
 path_end = [r"\Theme.txt",r"\Changelog.txt",r"\Font.txt",r"\FontSize.txt",r"\FontEdit.txt"]
 for i in range (len(path_end)):
     path = path_start + path_mid + path_end[i]
@@ -51,6 +56,11 @@ def reset_file(i):
     print("Rebuilding", path_list[i])
     myfile=open(path_list[i], "w")
     match i:
+        #FOR NEW SYSTEM
+        #case0:
+        #   myfile.write("pink,black,brown,white")
+        #case1:
+        #   myfile.write("none,18,bold,none,12,bold,none,9,bold")
         case 0:
             myfile.write("pink,black,brown,white")
         case 1:
@@ -89,15 +99,37 @@ def Convert(string):
 #Reading + Assigning all the themes accordingly!
 def changes():
 ##Start Reading
+    #Themes
     global theme1
     global theme2
     global theme3
     global theme4
+
+    #OLD FONT SYS
     global Title
     global Subtext
     global Button_Txt
     global Credits_Txt
+
+    #Removal Incoming...
     global changes2
+
+    #REWORKED FONTS
+    #Headers
+    global h1_ff
+    global h1_fs
+    global h1_fe
+
+    #Labels
+    global l_ff
+    global l_fs
+    global l_fe
+
+    #Buttons
+    global b_ff
+    global b_fs
+    global b_fe
+
     for i in range(len(path_end)):
         myfile = open(path_list[i], "r")
         a = myfile.read()
@@ -114,23 +146,42 @@ def changes():
                 changes2 = a
             case 2: #Font
                 font1 = Convert(a)
+                #NEW FONT SYS
+                h1_ff = font1[0]
+                l_ff = font1[1]
+                b_ff = font1[2]
+
+                #OLD FONT SYS
                 font11 = font1[0]
                 font12 = font1[1]
                 font13 = font1[2]
                 font14 = font1[3]
             case 3: #Size
+                #NEW FONT SYS
+                h1_fs = font2[0]
+                l_fs = font2[1]
+                b_fs = font2[2]
+
+                #OLD FONT SYS
                 font2 = Convert(a)
                 font21 = font2[0]
                 font22 = font2[1]
                 font23 = font2[2]
                 font24 = font2[3]
             case 4: #Extras
+                #NEW FONT SYS
+                h1_fs = font3[0]
+                l_fs = font3[1]
+                b_fs = font3[2]
+
+                #OLD FONT SYS
                 font3 = Convert(a)
                 font31 = font3[0]
                 font32 = font3[1]
                 font33 = font3[2]
                 font34 = font3[3]
 
+#AFTER NEW SYS IMPLEMENTED THIS IS USELESS
     Titl = font11 + " " + font21
     Subte = font12 + " " + font22
     Butto = font13 + " " + font23
@@ -156,6 +207,8 @@ def changes():
         Credits_Txt = Credi
     else:
         Credits_Txt = Credi + " " + font34
+#UP TO HERE
+
 
 #Calls the function to assign starter theme
 changes()
