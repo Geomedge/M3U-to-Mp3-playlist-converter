@@ -210,6 +210,22 @@ def changes():
 #UP TO HERE
 
 
+    global btn
+    btn = {
+    'bg': theme3,
+    'fg': theme4,
+    'width': 25,
+    'font':Button_Txt,
+    'height':1,
+    }
+
+    global title
+    title = {
+    'bg':theme1,
+    'fg':theme2,
+    'font':['Segoe UI','18','bold'],
+    }
+
 #Calls the function to assign starter theme
 changes()
 
@@ -298,35 +314,6 @@ def bug_report():
 
     button7 = tk.Button(confirm, text='Back', command=lambda:[confirm.destroy(), menu()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
     canvas1.create_window(50, 175, window=button7)
-
-
-def changelog():
-    changelog = tk.Tk()
-    changelog.eval('tk::PlaceWindow . centre')
-    changelog.title("Changelog")
-    canvas1 = tk.Canvas(changelog, width=500, height=400, relief='raised', bg = theme1)
-    canvas1.pack()
-
-    title = tk.Label(changelog, text='Changelog', bg = theme1, fg = theme2, font=('none 18 bold'))
-    canvas1.create_window(250, 25, window=title)
-
-
-
-    text_widget = tk.Text(changelog, wrap='word', height=20, width=80,bg = theme1, fg = theme2, font =('segoe UI', 9), borderwidth=0)
-    canvas1.create_window(250,200, window = text_widget)
-    sample_text = changes2
-    text_widget.insert(tk.END, sample_text)
-    text_widget.config(state=tk.DISABLED)
-
-    scrollbar = ttk.Scrollbar(orient=tk.VERTICAL, command=text_widget.yview)
-    text_widget.config(yscrollcommand=scrollbar.set)
-    canvas1.create_window(430, 200, window=scrollbar, height=300)
-
-    l2 = tk.Label(changelog, text=last_update, bg = theme1, fg = theme2)
-    canvas1.create_window(430, 385, window=l2)
-    
-    button7 = tk.Button(changelog, text='Back', command=lambda:[changelog.destroy(), menu()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
-    canvas1.create_window(50, 385, window=button7)
 
 
 #Customisation
@@ -719,55 +706,55 @@ def colour_settings():
 def colour_settings_menu():
     colour = tk.Tk()
     colour.eval('tk::PlaceWindow . centre')
-    colour.title("Settings")
+    colour.title("Colour Settings")
     colour.configure(bg = theme1)
-    canvas1 = tk.Canvas(colour, width=400, height=105, relief='raised', bg = theme1, bd=0, highlightthickness=0)
-    canvas1.pack()
 
-    title = tk.Label(colour, text='Settings', bg = theme1, fg = theme2)
-    title.config(font=(Title))
-    canvas1.create_window(200, 25, window=title)
-    
-    label1 = tk.Label(colour, text='Made By Geomedge', bg = theme1, fg = theme2)
-    label1.config(font=(Credits_Txt))
-    canvas1.create_window(340, 125, window=label1)
+    h1 = tk.Label(colour, text='Settings', bg = theme1, fg = theme2)
+    h1.config(font=(Title))
+    h1.pack()
 
-    button1 = tk.Button(colour, text='Preset Colour Settings', command=lambda:[basic_colour_settings(), colour.destroy()], bg=theme3, fg= theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(100, 60, window=button1)
+    frame = tk.Frame(colour, bg=theme1)
 
-    button2 = tk.Button(colour, text='Advanced Colour Settings', command=lambda:[colour_settings(), colour.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(300, 60, window=button2)
+    b1 = tk.Button(frame, text='Preset Colour Settings', command=lambda:[basic_colour_settings(), colour.destroy()], bg=theme3, fg= theme4, font=(Button_Txt), width=25, height=1)
+    b1.grid(row=0, column=0, padx=5, pady=2)
 
-    button7 = tk.Button(colour, text='Back', command=lambda:[colour.destroy(), settings()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
-    canvas1.create_window(48, 90, window=button7)
+    b2 = tk.Button(frame, text='Advanced Colour Settings', command=lambda:[colour_settings(), colour.destroy()], **btn)
+    b2.grid(row=0, column=1, padx=5, pady=2)
+    frame.pack(side='top', anchor='center')
+
+    b3 = tk.Button(colour, text='Back', command=lambda:[colour.destroy(), settings()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    b3.pack(anchor="sw",side=tk.LEFT, padx=5, pady=10)
 
 
 #Themes
 def theme():
+    #Fixed
     theme_app = tk.Tk()
-    theme_app.title("Theme")
+    theme_app.title("Theme Settings")
     theme_app.eval('tk::PlaceWindow . centre')
-    canvas1 = tk.Canvas(theme_app, width=400, height=140, relief='raised', bg = theme1)
-    canvas1.pack()
+    theme_app.configure(background=theme1)
 
-    title = tk.Label(theme_app, text='Select Your Theme', bg = theme1, fg = theme2)
-    title.config(font=(Title))
-    canvas1.create_window(200, 25, window=title)
-
-    button1 = tk.Button(theme_app, text='Light Theme', command=lambda:[light(), theme_app.destroy(), theme()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(100, 60, window=button1)
-
-    button2 = tk.Button(theme_app, text='Dark Theme', command=lambda:[dark(), theme_app.destroy(), theme()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(300, 60, window=button2)
-
-    button3 = tk.Button(theme_app, text='Hacker Theme', command=lambda:[hacker(), theme_app.destroy(), theme()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(100, 90, window=button3)
-
-    button4 = tk.Button(theme_app, text='Mellow Theme', command=lambda:[mellow(), theme_app.destroy(), theme()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(300, 90, window=button4)
+    h1 = tk.Label(theme_app, text='Select Your Theme', bg = theme1, fg = theme2)
+    h1.config(font=(Title))
+    h1.pack()
     
-    button7 = tk.Button(theme_app, text='Back', command=lambda:[settings(), theme_app.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
-    canvas1.create_window(48, 120, window=button7)
+    frame = tk.Frame(theme_app, bg=theme1)
+
+    b1 = tk.Button(frame, text='Light Theme', command=lambda:[light(), theme_app.destroy(), theme()], **btn)
+    b1.grid(row=0, column=0, padx=5, pady=2)
+
+    b2 = tk.Button(frame, text='Dark Theme', command=lambda:[dark(), theme_app.destroy(), theme()], **btn)
+    b2.grid(row=0, column=1, padx=5, pady=2)
+
+    b3 = tk.Button(frame, text='Hacker Theme', command=lambda:[hacker(), theme_app.destroy(), theme()], **btn)
+    b3.grid(row=1, column=0, padx=5, pady=2)
+
+    b4 = tk.Button(frame, text='Mellow Theme', command=lambda:[mellow(), theme_app.destroy(), theme()], **btn)
+    b4.grid(row=1, column=1, padx=5, pady=2)
+    frame.pack(side='top', anchor='center')
+
+    b5 = tk.Button(theme_app, text='Back', command=lambda:[settings(), theme_app.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    b5.pack(anchor="sw",side=tk.LEFT, padx=5, pady=10)
 
 
 #MP3 Converter app
@@ -894,90 +881,61 @@ def converter():
 
 #settings
 def settings():
+    #Done
     setting = tk.Tk()
     setting.eval('tk::PlaceWindow . centre')
     setting.title("Settings")
     setting.configure(bg = theme1)
-    canvas1 = tk.Canvas(setting, width=400, height=135, relief='raised', bg = theme1, bd=0, highlightthickness=0)
-    canvas1.pack()
 
-    title = tk.Label(setting, text='Settings', bg = theme1, fg = theme2)
-    title.config(font=(Title))
-    canvas1.create_window(200, 25, window=title)
-    
-    label1 = tk.Label(setting, text='Made By Geomedge', bg = theme1, fg = theme2)
-    label1.config(font=(Credits_Txt))
-    canvas1.create_window(340, 125, window=label1)
+    h1 = tk.Label(setting, text='Settings', bg = theme1, fg = theme2)
+    h1.config(font=(Title))
+    h1.pack(pady=2)
 
-    button1 = tk.Button(setting, text='Change Fonts', command=lambda:[change_font(), setting.destroy()], bg=theme3, fg= theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(100, 60, window=button1)
+    frame = tk.Frame(setting, bg=theme1)
 
-    button2 = tk.Button(setting, text='Change Theme', command=lambda:[theme(), setting.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(100, 90, window=button2)
+    b1 = tk.Button(frame, text='Change Theme', command=lambda:[theme(), setting.destroy()], **btn)
+    b1.grid(row=0, column=0, padx=5, pady=2)
 
-    button5 = tk.Button(setting, text='Uninstall Python Scripts', command=lambda:[confirm(), setting.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(300, 60, window=button5)
+    b2 = tk.Button(frame, text='Colour settings', command=lambda:[colour_settings_menu(), setting.destroy()], **btn)
+    b2.grid(row=0, column=1, padx=5, pady=2)
 
-    button3 = tk.Button(setting, text='Colour settings', command=lambda:[colour_settings_menu(), setting.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(300, 90, window=button3)
+    b3 = tk.Button(frame, text='Change Fonts', command=lambda:[change_font(), setting.destroy()], bg=theme3, fg= theme4, font=(Button_Txt), width=25, height=1)
+    b3.grid(row=1, column=0, padx=5, pady=2)
 
-    button7 = tk.Button(setting, text='Back', command=lambda:[setting.destroy(), menu()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
-    canvas1.create_window(48, 120, window=button7)
+    b4 = tk.Button(frame, text='Uninstall Python Scripts', command=lambda:[confirm(), setting.destroy()], **btn)
+    b4.grid(row=1, column=1, padx=5, pady=2)
+    frame.pack(side='top', anchor='center')
 
+    b5 = tk.Button(setting, text='Back', command=lambda:[setting.destroy(), menu()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    b5.pack(anchor="sw",side=tk.LEFT, padx=5, pady=10)
 
-#Credits
-def credit():
-    credit = tk.Tk()
-    credit.eval('tk::PlaceWindow . centre')
-    credit.eval('tk::PlaceWindow . centre')
-    credit.configure(bg = theme1)
-    credit.title("Credits")
-    canvas2 = tk.Canvas(credit, width=300, height=100, relief='raised', bg = theme1, bd=0, highlightthickness=0)
-    canvas2.pack()
-
-    label1 = tk.Label(credit, text='Made By Geomedge', bg = theme1, fg = theme2)
-    label1.config(font=('helvetica', 12, 'bold'))
-    canvas2.create_window(150, 25, window=label1)
-
-    label1 = tk.Label(credit, text='Thank you for using the app!', bg = theme1, fg = theme2)
-    label1.config(font=('helvetica', 12, 'bold'))
-    canvas2.create_window(150, 50, window=label1)
-    
-    button2 = tk.Button(credit, text='Back', command=lambda:[credit.destroy(), menu()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
-    canvas2.create_window(50, 85, window=button2)
 
 #Menu
 def menu():
-    #Basic Menu!
+    #Finished Menu
     menu = tk.Tk()
     menu.eval('tk::PlaceWindow . centre')
     menu.configure(bg = theme1)
     menu.title("MP3 Converter")
-    menu.minsize(500, 200)
+    menu.minsize(500, 150)
 
-    l1 = tk.Label(menu, text='MP3 Converter By Geomedge', bg = theme1, fg = theme2)
-    l1.config(font=("Segoe UI", "18", "bold"))
-    l1.pack()
+    h1 = tk.Label(menu, text='MP3 Converter By Geomedge', **title)
+    h1.config(font=("Segoe UI", "18", "bold"))
+    h1.pack()
 
     frame = tk.Frame(menu, bg=theme1)
 
-    b1 = tk.Button(frame, text='MP3 Converter', command=lambda:[menu.destroy(), converter()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b1 = tk.Button(frame, text='MP3 Converter', command=lambda:[menu.destroy(), converter()],**btn)
     b1.grid(row=0, column=0, padx=5, pady=2)
 
-    b2 = tk.Button(frame, text='Settings', command=lambda:[menu.destroy(), settings()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b2 = tk.Button(frame, text='Settings', command=lambda:[menu.destroy(), settings()], **btn)
     b2.grid(row=0, column=1, padx=5, pady=2)
 
-    b3 = tk.Button(frame, text='Changelog', command=lambda:[menu.destroy(), changelog()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b3 = tk.Button(frame, text='Report Bugs', command=lambda:[menu.destroy(), bug_report()], **btn)
     b3.grid(row=1, column=0, padx=5, pady=2)
 
-    b4 = tk.Button(frame, text='Report Bug', command=lambda:[menu.destroy(), bug_report()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b4 = tk.Button(frame, text='Quit', command=exit_app, **btn)
     b4.grid(row=1, column=1, padx=5, pady=2)
-    
-    b5 = tk.Button(frame, text='Credits', command=lambda:[menu.destroy(), credit()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    b5.grid(row=2, column=0, padx=5, pady=2)
-
-    b6 = tk.Button(frame, text='Quit', command=exit_app, bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    b6.grid(row=2, column=1, padx=5, pady=2)
     frame.pack(side='top', anchor='center')
 
     l2 = tk.Label(menu, text='Made By Geomedge', bg = theme1, fg = theme2)
