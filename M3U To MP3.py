@@ -841,35 +841,36 @@ def converter():
 
 #settings
 def settings():
+    #Done
     setting = tk.Tk()
     setting.eval('tk::PlaceWindow . centre')
     setting.title("Settings")
     setting.configure(bg = theme1)
-    canvas1 = tk.Canvas(setting, width=400, height=135, relief='raised', bg = theme1, bd=0, highlightthickness=0)
-    canvas1.pack()
 
-    title = tk.Label(setting, text='Settings', bg = theme1, fg = theme2)
-    title.config(font=(Title))
-    canvas1.create_window(200, 25, window=title)
+    h1 = tk.Label(setting, text='Settings', bg = theme1, fg = theme2)
+    h1.config(font=(Title))
+    h1.pack(pady=2)
     
     label1 = tk.Label(setting, text='Made By Geomedge', bg = theme1, fg = theme2)
     label1.config(font=(Credits_Txt))
-    canvas1.create_window(340, 125, window=label1)
 
-    button1 = tk.Button(setting, text='Change Fonts', command=lambda:[change_font(), setting.destroy()], bg=theme3, fg= theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(100, 60, window=button1)
+    frame = tk.Frame(setting, bg=theme1)
 
-    button2 = tk.Button(setting, text='Change Theme', command=lambda:[theme(), setting.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(100, 90, window=button2)
+    b1 = tk.Button(frame, text='Change Fonts', command=lambda:[change_font(), setting.destroy()], bg=theme3, fg= theme4, font=(Button_Txt), width=25, height=1)
+    b1.grid(row=0, column=0, padx=5, pady=2)
 
-    button5 = tk.Button(setting, text='Uninstall Python Scripts', command=lambda:[confirm(), setting.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(300, 60, window=button5)
+    b2 = tk.Button(frame, text='Change Theme', command=lambda:[theme(), setting.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b2.grid(row=0, column=1, padx=5, pady=2)
 
-    button3 = tk.Button(setting, text='Colour settings', command=lambda:[colour_settings_menu(), setting.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(300, 90, window=button3)
+    b3 = tk.Button(frame, text='Uninstall Python Scripts', command=lambda:[confirm(), setting.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b3.grid(row=1, column=0, padx=5, pady=2)
 
-    button7 = tk.Button(setting, text='Back', command=lambda:[setting.destroy(), menu()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
-    canvas1.create_window(48, 120, window=button7)
+    b4 = tk.Button(frame, text='Colour settings', command=lambda:[colour_settings_menu(), setting.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b4.grid(row=1, column=1, padx=5, pady=2)
+    frame.pack(side='top', anchor='center')
+
+    b5 = tk.Button(setting, text='Back', command=lambda:[setting.destroy(), menu()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    b5.pack(anchor="sw",side=tk.LEFT, padx=5, pady=10)
 
 
 #Credits
@@ -895,7 +896,7 @@ def credit():
 
 #Menu
 def menu():
-    #Basic Menu!
+    #Finished Menu
     menu = tk.Tk()
     menu.eval('tk::PlaceWindow . centre')
     menu.configure(bg = theme1)
