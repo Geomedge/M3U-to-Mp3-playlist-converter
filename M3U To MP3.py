@@ -809,7 +809,7 @@ def converter():
                     except:
                         errors += 1
                         incompatible.append(line)
-                        file = open("notcopied", "ab")
+                        file = open(notcopied, "ab")
                         line = line + "\n"
                         file.write(line.encode('utf-8', 'ignore'))
                         file.close()
