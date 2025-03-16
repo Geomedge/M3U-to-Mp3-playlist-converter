@@ -853,16 +853,16 @@ def settings():
 
     frame = tk.Frame(setting, bg=theme1)
 
-    b1 = tk.Button(frame, text='Change Fonts', command=lambda:[change_font(), setting.destroy()], bg=theme3, fg= theme4, font=(Button_Txt), width=25, height=1)
+    b1 = tk.Button(frame, text='Change Theme', command=lambda:[theme(), setting.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
     b1.grid(row=0, column=0, padx=5, pady=2)
 
-    b2 = tk.Button(frame, text='Change Theme', command=lambda:[theme(), setting.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b2 = tk.Button(frame, text='Colour settings', command=lambda:[colour_settings_menu(), setting.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
     b2.grid(row=0, column=1, padx=5, pady=2)
 
-    b3 = tk.Button(frame, text='Uninstall Python Scripts', command=lambda:[confirm(), setting.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b3 = tk.Button(frame, text='Change Fonts', command=lambda:[change_font(), setting.destroy()], bg=theme3, fg= theme4, font=(Button_Txt), width=25, height=1)
     b3.grid(row=1, column=0, padx=5, pady=2)
 
-    b4 = tk.Button(frame, text='Colour settings', command=lambda:[colour_settings_menu(), setting.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b4 = tk.Button(frame, text='Uninstall Python Scripts', command=lambda:[confirm(), setting.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
     b4.grid(row=1, column=1, padx=5, pady=2)
     frame.pack(side='top', anchor='center')
 
@@ -898,7 +898,7 @@ def menu():
     menu.eval('tk::PlaceWindow . centre')
     menu.configure(bg = theme1)
     menu.title("MP3 Converter")
-    menu.minsize(500, 200)
+    menu.minsize(500, 150)
 
     l1 = tk.Label(menu, text='MP3 Converter By Geomedge', bg = theme1, fg = theme2)
     l1.config(font=("Segoe UI", "18", "bold"))
@@ -912,17 +912,11 @@ def menu():
     b2 = tk.Button(frame, text='Settings', command=lambda:[menu.destroy(), settings()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
     b2.grid(row=0, column=1, padx=5, pady=2)
 
-    b3 = tk.Button(frame, text='Changelog', command=lambda:[menu.destroy(), changelog()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b3 = tk.Button(frame, text='Report Bugs', command=lambda:[menu.destroy(), bug_report()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
     b3.grid(row=1, column=0, padx=5, pady=2)
 
-    b4 = tk.Button(frame, text='Report Bug', command=lambda:[menu.destroy(), bug_report()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b4 = tk.Button(frame, text='Quit', command=exit_app, bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
     b4.grid(row=1, column=1, padx=5, pady=2)
-    
-    b5 = tk.Button(frame, text='Credits', command=lambda:[menu.destroy(), credit()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    b5.grid(row=2, column=0, padx=5, pady=2)
-
-    b6 = tk.Button(frame, text='Quit', command=exit_app, bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    b6.grid(row=2, column=1, padx=5, pady=2)
     frame.pack(side='top', anchor='center')
 
     l2 = tk.Label(menu, text='Made By Geomedge', bg = theme1, fg = theme2)
