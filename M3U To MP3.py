@@ -692,29 +692,29 @@ def colour_settings_menu():
 #Themes
 def theme():
     theme_app = tk.Tk()
-    theme_app.title("Theme")
+    theme_app.title("Theme Settings")
     theme_app.eval('tk::PlaceWindow . centre')
-    canvas1 = tk.Canvas(theme_app, width=400, height=140, relief='raised', bg = theme1)
-    canvas1.pack()
 
-    title = tk.Label(theme_app, text='Select Your Theme', bg = theme1, fg = theme2)
-    title.config(font=(Title))
-    canvas1.create_window(200, 25, window=title)
-
-    button1 = tk.Button(theme_app, text='Light Theme', command=lambda:[light(), theme_app.destroy(), theme()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(100, 60, window=button1)
-
-    button2 = tk.Button(theme_app, text='Dark Theme', command=lambda:[dark(), theme_app.destroy(), theme()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(300, 60, window=button2)
-
-    button3 = tk.Button(theme_app, text='Hacker Theme', command=lambda:[hacker(), theme_app.destroy(), theme()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(100, 90, window=button3)
-
-    button4 = tk.Button(theme_app, text='Mellow Theme', command=lambda:[mellow(), theme_app.destroy(), theme()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(300, 90, window=button4)
+    h1 = tk.Label(theme_app, text='Select Your Theme', bg = theme1, fg = theme2)
+    h1.config(font=(Title))
     
-    button7 = tk.Button(theme_app, text='Back', command=lambda:[settings(), theme_app.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
-    canvas1.create_window(48, 120, window=button7)
+    frame = tk.Frame(theme_app, bg=theme1)
+
+    b1 = tk.Button(frame, text='Light Theme', command=lambda:[light(), theme_app.destroy(), theme()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b1.grid(row=0, column=0, padx=5, pady=2)
+
+    b2 = tk.Button(frame, text='Dark Theme', command=lambda:[dark(), theme_app.destroy(), theme()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b2.grid(row=0, column=1, padx=5, pady=2)
+
+    b3 = tk.Button(frame, text='Hacker Theme', command=lambda:[hacker(), theme_app.destroy(), theme()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b3.grid(row=1, column=0, padx=5, pady=2)
+
+    b4 = tk.Button(frame, text='Mellow Theme', command=lambda:[mellow(), theme_app.destroy(), theme()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b4.grid(row=1, column=1, padx=5, pady=2)
+    frame.pack(side='top', anchor='center')
+
+    b5 = tk.Button(theme_app, text='Back', command=lambda:[settings(), theme_app.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    b5.pack(anchor="sw",side=tk.LEFT, padx=5, pady=10)
 
 
 #MP3 Converter app
@@ -850,9 +850,6 @@ def settings():
     h1 = tk.Label(setting, text='Settings', bg = theme1, fg = theme2)
     h1.config(font=(Title))
     h1.pack(pady=2)
-    
-    label1 = tk.Label(setting, text='Made By Geomedge', bg = theme1, fg = theme2)
-    label1.config(font=(Credits_Txt))
 
     frame = tk.Frame(setting, bg=theme1)
 
