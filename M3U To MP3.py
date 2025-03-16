@@ -45,8 +45,7 @@ if existing == True:
 else:
     os.mkdir(file)
 #Working On Combining Some Of The Files And Removing Changelog
-#path_end = [r"\Theme.txt",r"\Font.txt"] <-- New Code
-path_end = [r"\Theme.txt",r"\Changelog.txt",r"\Font.txt",r"\FontSize.txt",r"\FontEdit.txt"]
+path_end = [r"\Theme.txt",r"\Font.txt"]
 for i in range (len(path_end)):
     path = path_start + path_mid + path_end[i]
     path_list.append(path)
@@ -56,21 +55,10 @@ def reset_file(i):
     print("Rebuilding", path_list[i])
     myfile=open(path_list[i], "w")
     match i:
-        #FOR NEW SYSTEM
-        #case0:
-        #   myfile.write("pink,black,brown,white")
-        #case1:
-        #   myfile.write("none,18,bold,none,12,bold,none,9,bold")
         case 0:
-            myfile.write("pink,black,brown,white")
+           myfile.write("pink,black,brown,white")
         case 1:
-            myfile.write(text)
-        case 2:
-            myfile.write("none,none,helvetica,helvetica")
-        case 3:
-            myfile.write("18,12,9,9")
-        case 4:
-            myfile.write("bold,bold,bold,none")
+           myfile.write("Segoe UI,18,bold,Segoe UI,12,bold,Segoe UI,9,bold")
         case _:
             master = tk.Tk()
             master.withdraw()
@@ -104,127 +92,74 @@ def changes():
     global theme2
     global theme3
     global theme4
+    try:
+        for i in range(len(path_end)):
+            myfile = open(path_list[i], "r")
+            a = myfile.read()
+            myfile.close()
 
-    #OLD FONT SYS
-    global Title
-    global Subtext
-    global Button_Txt
-    global Credits_Txt
+            match i:
+                case 0: #Themes
+                    theme = Convert(a)
+                    theme1 = theme[0]
+                    theme2 = theme[1]
+                    theme3 = theme[2]
+                    theme4 = theme[3]
+                case 1: #Unused! - This is used for a different program
+                    font = Convert(a)
+                    #Title
+                    h1_ff = str(font[0])
+                    h1_fs = font[1]
+                    h1_fe = str(font[2])
+                    title_font = [h1_ff,h1_fs,h1_fe]
 
-    #Removal Incoming...
-    global changes2
+                    #Label
+                    l_ff = str(font[3])
+                    l_fs = font[4]
+                    l_fe = str(font[5])
+                    label_font = [l_ff,l_fs,l_fe]
 
-    #REWORKED FONTS
-    #Headers
-    global h1_ff
-    global h1_fs
-    global h1_fe
+                    #Buttons
+                    b_ff = str(font[6])
+                    b_fs = font[7]
+                    b_fe = str(font[8])
+                    button_font = [b_ff,b_fs,b_fe]
 
-    #Labels
-    global l_ff
-    global l_fs
-    global l_fe
+        global title
+        title = {
+        'bg':theme1,
+        'fg':theme2,
+        'font':title_font,
+        }
 
-    #Buttons
-    global b_ff
-    global b_fs
-    global b_fe
+        global labe
+        labe = {
+        'bg': theme1,
+        'fg': theme2,
+        'font': label_font,
+        }
 
-    for i in range(len(path_end)):
-        myfile = open(path_list[i], "r")
-        a = myfile.read()
-        myfile.close()
-
-        match i:
-            case 0: #Themes
-                theme = Convert(a)
-                theme1 = theme[0]
-                theme2 = theme[1]
-                theme3 = theme[2]
-                theme4 = theme[3]
-            case 1: #Unused! - This is used for a different program
-                changes2 = a
-            case 2: #Font
-                font1 = Convert(a)
-                #NEW FONT SYS
-                h1_ff = font1[0]
-                l_ff = font1[1]
-                b_ff = font1[2]
-
-                #OLD FONT SYS
-                font11 = font1[0]
-                font12 = font1[1]
-                font13 = font1[2]
-                font14 = font1[3]
-            case 3: #Size
-                #NEW FONT SYS
-                h1_fs = font2[0]
-                l_fs = font2[1]
-                b_fs = font2[2]
-
-                #OLD FONT SYS
-                font2 = Convert(a)
-                font21 = font2[0]
-                font22 = font2[1]
-                font23 = font2[2]
-                font24 = font2[3]
-            case 4: #Extras
-                #NEW FONT SYS
-                h1_fs = font3[0]
-                l_fs = font3[1]
-                b_fs = font3[2]
-
-                #OLD FONT SYS
-                font3 = Convert(a)
-                font31 = font3[0]
-                font32 = font3[1]
-                font33 = font3[2]
-                font34 = font3[3]
-
-#AFTER NEW SYS IMPLEMENTED THIS IS USELESS
-    Titl = font11 + " " + font21
-    Subte = font12 + " " + font22
-    Butto = font13 + " " + font23
-    Credi = font14 + " " + font24
-
-    #Title
-    if font31 == "none":
-        Title = Titl
-    else:
-        Title = Titl + " " + font31
-    #SubText
-    if font32 == "none":
-        Subtext = Subte
-    else:
-        Subtext = Subte + " " + font32
-    #Button Text
-    if font33 == "none":
-        Button_Txt = Butto
-    else:
-        Button_Txt = Butto + " " + font33
-    #Credits Text
-    if font34 == "none":
-        Credits_Txt = Credi
-    else:
-        Credits_Txt = Credi + " " + font34
-#UP TO HERE
+        global btn
+        btn = {
+        'bg': theme3,
+        'fg': theme4,
+        'width': 25,
+        'font':button_font,
+        'height':1,
+        }
+        
+        global credit_font
+        credit_font = {
+        'bg':theme1,
+        'fg':theme2,
+        'font':("Segoe UI", 9, "")
+        }
+    except:
+        for i in range(2):
+            reset_file(i)
+        changes()
 
 
-    global btn
-    btn = {
-    'bg': theme3,
-    'fg': theme4,
-    'width': 25,
-    'font':Button_Txt,
-    'height':1,
-    }
-
-    global title
-    title = {
-    'bg':theme1,
-    'fg':theme2,
-    'font':['Segoe UI','18','bold'],
-    }
 
 #Calls the function to assign starter theme
 changes()
@@ -920,7 +855,6 @@ def menu():
     menu.minsize(500, 150)
 
     h1 = tk.Label(menu, text='MP3 Converter By Geomedge', **title)
-    h1.config(font=("Segoe UI", "18", "bold"))
     h1.pack()
 
     frame = tk.Frame(menu, bg=theme1)
@@ -936,14 +870,13 @@ def menu():
 
     b4 = tk.Button(frame, text='Quit', command=exit_app, **btn)
     b4.grid(row=1, column=1, padx=5, pady=2)
+
     frame.pack(side='top', anchor='center')
 
-    l2 = tk.Label(menu, text='Made By Geomedge', bg = theme1, fg = theme2)
-    l2.config(font=(Credits_Txt))
+    l2 = tk.Label(menu, text='Made By Geomedge', **credit_font)
     l2.pack(anchor="se",side=tk.RIGHT, padx=5, pady=10)
 
-    l3 = tk.Label(menu, text= Version, bg = theme1, fg = theme2)
-    l3.config(font=(Credits_Txt))
+    l3 = tk.Label(menu, text= Version, **credit_font)
     l3.pack(anchor="sw",side=tk.LEFT, padx=5, pady=10)
     menu.mainloop()
 
@@ -954,12 +887,12 @@ try:
     try:
         menu()
     except:
-        menu.withdraw()
-        for i in range(5):
+        for i in range(2):
             reset_file(i)
         #Calls the reset_file function which restarts all files to original state set by me / any other dev
         changes()
         #Calls this function to update all the theme and font values
+        menu.withdraw()
         menu()
         #Can Load Menu With Default Settings!
 except:
