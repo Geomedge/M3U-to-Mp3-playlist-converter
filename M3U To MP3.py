@@ -154,6 +154,15 @@ def changes():
         'fg':theme2,
         'font':("Segoe UI", 9, "")
         }
+
+        global back
+        back = {
+        'bg': theme3,
+        'fg': theme4,
+        'width': 10,
+        'font':button_font,
+        'height':1,          
+        }
     except:
         for i in range(2):
             reset_file(i)
@@ -239,15 +248,14 @@ def bug_report():
     title5.bind("<Button-1>", lambda e: callback("https://discord.gg/QN5HrTAYYs"))
     title6.bind("<Button-1>", lambda e: callback("https://forms.office.com/r/x7Le5d2bbE"))
     
-    title = tk.Label(confirm, text='Report Bugs', bg = theme1, fg = theme2)
-    title.config(font=(Title))
+    title = tk.Label(confirm, text='Report Bugs', **labe)
     canvas1.create_window(250, 25, window=title)
 
-    title1 = tk.Label(confirm, text='Select any link below to get started.', bg = theme1, fg = theme2)
-    title1.config(font=('none 9 bold'))
+    title1 = tk.Label(confirm, text='Select any link below to get started.', **labe)
+    
     canvas1.create_window(250, 50, window=title1)
 
-    button7 = tk.Button(confirm, text='Back', command=lambda:[confirm.destroy(), menu()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    button7 = tk.Button(confirm, text='Back', command=lambda:[confirm.destroy(), menu()], **back)
     canvas1.create_window(50, 175, window=button7)
 
 
@@ -260,36 +268,36 @@ def font_set3():
     canvas1 = tk.Canvas(confirm, width=500, height=300, relief='raised', bg = theme1)
     canvas1.pack()
 
-    title = tk.Label(confirm, text='Change Font Extras (Itallics, Bold, etc)', bg = theme1, fg = theme2)
+    title = tk.Label(confirm, text='Change Font Extras (Itallics, Bold, etc)', **labe)
     title.config(font=('none 12 bold'))
     canvas1.create_window(250, 25, window=title)
 
-    title1 = tk.Label(confirm, text='Input Title Extras', bg = theme1, fg = theme2)
-    title1.config(font=('none 9 bold'))
+    title1 = tk.Label(confirm, text='Input Title Extras', **labe)
+    
     canvas1.create_window(250, 50, window=title1)
 
-    entry5 = tk.Entry(confirm, font=Subtext)
+    entry5 = tk.Entry(confirm)
     canvas1.create_window(250, 75, window=entry5)
 
-    title2 = tk.Label(confirm, text='Input Text Extras', bg = theme1, fg = theme2)
-    title2.config(font=('none 9 bold'))
+    title2 = tk.Label(confirm, text='Input Text Extras', **labe)
+    
     canvas1.create_window(250, 100, window=title2)
 
-    entry6 = tk.Entry(confirm, font=Subtext)
+    entry6 = tk.Entry(confirm)
     canvas1.create_window(250, 125, window=entry6)
 
-    title3 = tk.Label(confirm, text='Input Button Extras', bg = theme1, fg = theme2)
-    title3.config(font=('none 9 bold'))
+    title3 = tk.Label(confirm, text='Input Button Extras', **labe)
+    
     canvas1.create_window(250, 150, window=title3)
 
-    entry7 = tk.Entry(confirm, font=Subtext)
+    entry7 = tk.Entry(confirm)
     canvas1.create_window(250, 175, window=entry7)
 
-    title4 = tk.Label(confirm, text='Input Every Other Font Extras', bg = theme1, fg = theme2)
-    title4.config(font=('none 9 bold'))
+    title4 = tk.Label(confirm, text='Input Every Other Font Extras', **labe)
+    
     canvas1.create_window(250, 200, window=title4)
 
-    entry8 = tk.Entry(confirm, font=Subtext)
+    entry8 = tk.Entry(confirm)
     canvas1.create_window(250, 225, window=entry8)
     
 
@@ -326,10 +334,10 @@ def font_set3():
             messagebox.showinfo("Done!", "Changes To Font Made!")
         
 
-    button1 = tk.Button(confirm, text='Change!', command=lambda:[theme_switch4(), confirm.destroy(), font_set3()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    button1 = tk.Button(confirm, text='Change!', command=lambda:[theme_switch4(), confirm.destroy(), font_set3()], **back)
     canvas1.create_window(250, 260, window=button1)
 
-    button7 = tk.Button(confirm, text='Back', command=lambda:[settings(), confirm.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    button7 = tk.Button(confirm, text='Back', command=lambda:[settings(), confirm.destroy()], **back)
     canvas1.create_window(50, 275, window=button7)
 
 def font_set2():
@@ -339,36 +347,34 @@ def font_set2():
     canvas1 = tk.Canvas(confirm, width=500, height=300, relief='raised', bg = theme1)
     canvas1.pack()
 
-    title = tk.Label(confirm, text='Change Font Size', bg = theme1, fg = theme2)
-    title.config(font=('none 12 bold'))
+    title = tk.Label(confirm, text='Change Font Size', **labe)
     canvas1.create_window(250, 25, window=title)
 
-    title1 = tk.Label(confirm, text='Input Title Size', bg = theme1, fg = theme2)
-    title1.config(font=('none 9 bold'))
+    title1 = tk.Label(confirm, text='Input Title Size', **labe)
     canvas1.create_window(250, 50, window=title1)
 
-    entry5 = tk.Entry(confirm, font=Subtext)
+    entry5 = tk.Entry(confirm)
     canvas1.create_window(250, 75, window=entry5)
 
-    title2 = tk.Label(confirm, text='Input Text Size', bg = theme1, fg = theme2)
-    title2.config(font=('none 9 bold'))
+    title2 = tk.Label(confirm, text='Input Text Size', **labe)
+    
     canvas1.create_window(250, 100, window=title2)
 
-    entry6 = tk.Entry(confirm, font=Subtext)
+    entry6 = tk.Entry(confirm)
     canvas1.create_window(250, 125, window=entry6)
 
-    title3 = tk.Label(confirm, text='Input Button Size', bg = theme1, fg = theme2)
-    title3.config(font=('none 9 bold'))
+    title3 = tk.Label(confirm, text='Input Button Size', **labe)
+    
     canvas1.create_window(250, 150, window=title3)
 
-    entry7 = tk.Entry(confirm, font=Subtext)
+    entry7 = tk.Entry(confirm)
     canvas1.create_window(250, 175, window=entry7)
 
-    title4 = tk.Label(confirm, text='Input Every Other Font Size', bg = theme1, fg = theme2)
-    title4.config(font=('none 9 bold'))
+    title4 = tk.Label(confirm, text='Input Every Other Font Size', **labe)
+    
     canvas1.create_window(250, 200, window=title4)
 
-    entry8 = tk.Entry(confirm, font=Subtext)
+    entry8 = tk.Entry(confirm)
     canvas1.create_window(250, 225, window=entry8)
     
     def theme_switch3():
@@ -393,10 +399,10 @@ def font_set2():
 
         
 
-    button1 = tk.Button(confirm, text='Change!', command=lambda:[theme_switch3()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    button1 = tk.Button(confirm, text='Change!', command=lambda:[theme_switch3()], **back)
     canvas1.create_window(250, 260, window=button1)
 
-    button7 = tk.Button(confirm, text='Back', command=lambda:[settings(), confirm.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    button7 = tk.Button(confirm, text='Back', command=lambda:[settings(), confirm.destroy()], **back)
     canvas1.create_window(50, 275, window=button7)
 
 def change_font():
@@ -406,36 +412,36 @@ def change_font():
     canvas1 = tk.Canvas(confirm, width=500, height=300, relief='raised', bg = theme1)
     canvas1.pack()
 
-    title = tk.Label(confirm, text='Change Fonts (Write None If Default Font)', bg = theme1, fg = theme2)
+    title = tk.Label(confirm, text='Change Fonts (Write None If Default Font)', **labe)
     title.config(font=('none 12 bold'))
     canvas1.create_window(250, 25, window=title)
 
-    title1 = tk.Label(confirm, text='Input Title Font (Example : Helvetica)', bg = theme1, fg = theme2)
-    title1.config(font=('none 9 bold'))
+    title1 = tk.Label(confirm, text='Input Title Font (Example : Helvetica)', **labe)
+    
     canvas1.create_window(250, 50, window=title1)
 
-    entry5 = tk.Entry(confirm, font=Subtext)
+    entry5 = tk.Entry(confirm)
     canvas1.create_window(250, 75, window=entry5)
 
-    title2 = tk.Label(confirm, text='Input Text Font', bg = theme1, fg = theme2)
-    title2.config(font=('none 9 bold'))
+    title2 = tk.Label(confirm, text='Input Text Font', **labe)
+    
     canvas1.create_window(250, 100, window=title2)
 
-    entry6 = tk.Entry(confirm, font=Subtext)
+    entry6 = tk.Entry(confirm)
     canvas1.create_window(250, 125, window=entry6)
 
-    title3 = tk.Label(confirm, text='Input Button Font', bg = theme1, fg = theme2)
-    title3.config(font=('none 9 bold'))
+    title3 = tk.Label(confirm, text='Input Button Font', **labe)
+    
     canvas1.create_window(250, 150, window=title3)
 
-    entry7 = tk.Entry(confirm, font=Subtext)
+    entry7 = tk.Entry(confirm)
     canvas1.create_window(250, 175, window=entry7)
 
-    title4 = tk.Label(confirm, text='Input Every Other Font', bg = theme1, fg = theme2)
-    title4.config(font=('none 9 bold'))
+    title4 = tk.Label(confirm, text='Input Every Other Font', **labe)
+    
     canvas1.create_window(250, 200, window=title4)
 
-    entry8 = tk.Entry(confirm, font=Subtext)
+    entry8 = tk.Entry(confirm)
     canvas1.create_window(250, 225, window=entry8)
     
     def test(x9,x10,x11,x12):
@@ -477,10 +483,10 @@ def change_font():
             change_font()
         
 
-    button1 = tk.Button(confirm, text='Change!', command=lambda:[theme_switch2(), confirm.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    button1 = tk.Button(confirm, text='Change!', command=lambda:[theme_switch2(), confirm.destroy()], **back)
     canvas1.create_window(250, 260, window=button1)
 
-    button7 = tk.Button(confirm, text='Back', command=lambda:[settings(), confirm.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    button7 = tk.Button(confirm, text='Back', command=lambda:[settings(), confirm.destroy()], **back)
     canvas1.create_window(50, 275, window=button7)
 
 
@@ -491,12 +497,12 @@ def basic_colour_settings():
     canvas1 = tk.Canvas(confirm, width=500, height=300, relief='raised', bg = theme1)
     canvas1.pack()
 
-    title = tk.Label(confirm, text='Colour Settings', bg = theme1, fg = theme2)
+    title = tk.Label(confirm, text='Colour Settings', **labe)
     title.config(font=('none 18 bold'))
     canvas1.create_window(250, 25, window=title)
 
-    title1 = tk.Label(confirm, text='Background colour', bg = theme1, fg = theme2)
-    title1.config(font=('none 9 bold'))
+    title1 = tk.Label(confirm, text='Background colour', **labe)
+    
     canvas1.create_window(125, 50, window=title1)
 
     selected_option1 = tk.StringVar()
@@ -509,24 +515,24 @@ def basic_colour_settings():
     entry5.config(width = menu_len)
     canvas1.create_window(125, 75, window=entry5)
 
-    title2 = tk.Label(confirm, text='Colour of the text', bg = theme1, fg = theme2)
-    title2.config(font=('none 9 bold'))
+    title2 = tk.Label(confirm, text='Colour of the text', **labe)
+    
     canvas1.create_window(375, 50, window=title2)
 
     entry6 = tk.OptionMenu(confirm, selected_option2, *options)
     entry6.config(width = menu_len)
     canvas1.create_window(375, 75, window=entry6)
 
-    title3 = tk.Label(confirm, text='Background of buttons', bg = theme1, fg = theme2)
-    title3.config(font=('none 9 bold'))
+    title3 = tk.Label(confirm, text='Background of buttons', **labe)
+    
     canvas1.create_window(375, 125, window=title3)
 
     entry7 = tk.OptionMenu(confirm, selected_option3, *options)
     entry7.config(width = menu_len)
     canvas1.create_window(375, 150, window=entry7)
 
-    title4 = tk.Label(confirm, text='Text Colour of buttons', bg = theme1, fg = theme2)
-    title4.config(font=('none 9 bold'))
+    title4 = tk.Label(confirm, text='Text Colour of buttons', **labe)
+    
     canvas1.create_window(125, 125, window=title4)
 
     entry8 = tk.OptionMenu(confirm, selected_option4, *options)
@@ -554,10 +560,10 @@ def basic_colour_settings():
             quit
         
 
-    button1 = tk.Button(confirm, text='Change!', command=lambda:[theme_switch(), confirm.destroy(), basic_colour_settings()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    button1 = tk.Button(confirm, text='Change!', command=lambda:[theme_switch(), confirm.destroy(), basic_colour_settings()], **back)
     canvas1.create_window(250, 265, window=button1)
 
-    button7 = tk.Button(confirm, text='Back', command=lambda:[colour_settings_menu(), confirm.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    button7 = tk.Button(confirm, text='Back', command=lambda:[colour_settings_menu(), confirm.destroy()], **back)
     canvas1.create_window(50, 275, window=button7)
 
 def colour_settings():
@@ -567,36 +573,36 @@ def colour_settings():
     canvas1 = tk.Canvas(confirm, width=500, height=300, relief='raised', bg = theme1)
     canvas1.pack()
 
-    title = tk.Label(confirm, text='Enter Desired Colours!', bg = theme1, fg = theme2)
+    title = tk.Label(confirm, text='Enter Desired Colours!', **labe)
     title.config(font=('none 10 bold'))
     canvas1.create_window(250, 25, window=title)
 
-    title1 = tk.Label(confirm, text='Input Theme 1 (Background of window)', bg = theme1, fg = theme2)
-    title1.config(font=('none 9 bold'))
+    title1 = tk.Label(confirm, text='Input Theme 1 (Background of window)', **labe)
+    
     canvas1.create_window(250, 50, window=title1)
 
-    entry5 = tk.Entry(confirm, font=Subtext, width=25)
+    entry5 = tk.Entry(confirm, width=25)
     canvas1.create_window(250, 75, window=entry5)
 
-    title2 = tk.Label(confirm, text='Input Theme 2 (Text Colour of window)', bg = theme1, fg = theme2)
-    title2.config(font=('none 9 bold'))
+    title2 = tk.Label(confirm, text='Input Theme 2 (Text Colour of window)', **labe)
+    
     canvas1.create_window(250, 100, window=title2)
 
-    entry6 = tk.Entry(confirm, font=Subtext, width=25)
+    entry6 = tk.Entry(confirm, width=25)
     canvas1.create_window(250, 125, window=entry6)
 
-    title3 = tk.Label(confirm, text='Input Theme 3 (Background of buttons)', bg = theme1, fg = theme2)
-    title3.config(font=('none 9 bold'))
+    title3 = tk.Label(confirm, text='Input Theme 3 (Background of buttons)', **labe)
+    
     canvas1.create_window(250, 150, window=title3)
 
-    entry7 = tk.Entry(confirm, font=Subtext, width=25)
+    entry7 = tk.Entry(confirm, width=25)
     canvas1.create_window(250, 175, window=entry7)
 
-    title4 = tk.Label(confirm, text='Input Theme 4 (Text Colour of buttons)', bg = theme1, fg = theme2)
-    title4.config(font=('none 9 bold'))
+    title4 = tk.Label(confirm, text='Input Theme 4 (Text Colour of buttons)', **labe)
+    
     canvas1.create_window(250, 200, window=title4)
 
-    entry8 = tk.Entry(confirm, font=Subtext, width=25)
+    entry8 = tk.Entry(confirm, width=25)
     canvas1.create_window(250, 225, window=entry8)
 
     def Colour_Check(test):
@@ -632,10 +638,10 @@ def colour_settings():
 
         
 
-    button1 = tk.Button(confirm, text='Change!', command=lambda:[theme_switch(), confirm.destroy(), colour_settings()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    button1 = tk.Button(confirm, text='Change!', command=lambda:[theme_switch(), confirm.destroy(), colour_settings()], **back)
     canvas1.create_window(250, 260, window=button1)
 
-    button7 = tk.Button(confirm, text='Back', command=lambda:[colour_settings_menu(), confirm.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    button7 = tk.Button(confirm, text='Back', command=lambda:[colour_settings_menu(), confirm.destroy()], **back)
     canvas1.create_window(50, 275, window=button7)
 
 def colour_settings_menu():
@@ -644,20 +650,20 @@ def colour_settings_menu():
     colour.title("Colour Settings")
     colour.configure(bg = theme1)
 
-    h1 = tk.Label(colour, text='Settings', bg = theme1, fg = theme2)
-    h1.config(font=(Title))
+    h1 = tk.Label(colour, text='Settings', **title)
+    
     h1.pack()
 
     frame = tk.Frame(colour, bg=theme1)
 
-    b1 = tk.Button(frame, text='Preset Colour Settings', command=lambda:[basic_colour_settings(), colour.destroy()], bg=theme3, fg= theme4, font=(Button_Txt), width=25, height=1)
+    b1 = tk.Button(frame, text='Preset Colour Settings', command=lambda:[basic_colour_settings(), colour.destroy()], **btn)
     b1.grid(row=0, column=0, padx=5, pady=2)
 
     b2 = tk.Button(frame, text='Advanced Colour Settings', command=lambda:[colour_settings(), colour.destroy()], **btn)
     b2.grid(row=0, column=1, padx=5, pady=2)
     frame.pack(side='top', anchor='center')
 
-    b3 = tk.Button(colour, text='Back', command=lambda:[colour.destroy(), settings()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    b3 = tk.Button(colour, text='Back', command=lambda:[colour.destroy(), settings()], **back)
     b3.pack(anchor="sw",side=tk.LEFT, padx=5, pady=10)
 
 
@@ -669,8 +675,7 @@ def theme():
     theme_app.eval('tk::PlaceWindow . centre')
     theme_app.configure(background=theme1)
 
-    h1 = tk.Label(theme_app, text='Select Your Theme', bg = theme1, fg = theme2)
-    h1.config(font=(Title))
+    h1 = tk.Label(theme_app, text='Select Your Theme', **title)
     h1.pack()
     
     frame = tk.Frame(theme_app, bg=theme1)
@@ -688,7 +693,7 @@ def theme():
     b4.grid(row=1, column=1, padx=5, pady=2)
     frame.pack(side='top', anchor='center')
 
-    b5 = tk.Button(theme_app, text='Back', command=lambda:[settings(), theme_app.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    b5 = tk.Button(theme_app, text='Back', command=lambda:[settings(), theme_app.destroy()], **back)
     b5.pack(anchor="sw",side=tk.LEFT, padx=5, pady=10)
 
 
@@ -702,14 +707,14 @@ def converter():
     root.configure(bg = theme1)
     root.minsize(600, 500)
 
-    l1 = tk.Label(root, text='MP3 Converter', bg = theme1, fg = theme2)
+    l1 = tk.Label(root, text='MP3 Converter', **title)
     l1.config(font=("Segoe UI", "18", "bold"))
     l1.pack(anchor="nw",side=tk.TOP, padx=5, pady=5)
 
 
 #LOAD Files
 
-    l2 = tk.Label(root, text='Select M3U File:', font="none 12 bold", bg = theme1, fg = theme2)
+    l2 = tk.Label(root, text='Select M3U File:', font="none 12 bold", **labe)
     l2.pack(side='top', anchor='center', pady=5)
 
     def b():
@@ -719,16 +724,16 @@ def converter():
         text = "Selected Directory" + file_path
         l5.config(text=text)
         
-    b3 = tk.Button(root, text='Select File', command=b, bg = theme3, fg = theme4, font=('helvetica', 9, 'bold'), width=25)
+    b3 = tk.Button(root, text='Select File', command=b, **btn)
     b3.pack(side='top', anchor='center', pady=5)
 
-    l5 = tk.Label(root, text="NO PATH SELECTED", font=("Segoe UI", "9"), bg = theme1, fg = theme2)
+    l5 = tk.Label(root, text="NO PATH SELECTED", font=("Segoe UI", "9"), **labe)
     l5.pack(side='top', anchor='center', pady=5)
     
 
 #SAVE Files
 
-    l7 = tk.Label(root, text='Select Where To Save MP3 Files:', font="none 12 bold", bg = theme1, fg = theme2)
+    l7 = tk.Label(root, text='Select Where To Save MP3 Files:', font="none 12 bold", **labe)
     l7.pack(side='top', anchor='center', pady=5)
 
     def c():
@@ -738,10 +743,10 @@ def converter():
         textl = "Selected Directory : " + save_path
         l8.config(text=textl)
         
-    b4 = tk.Button(root, text='Select Folder', command=c, bg = theme3, fg = theme4, font=('helvetica', 9, 'bold'), width=25)
+    b4 = tk.Button(root, text='Select Folder', command=c, **btn)
     b4.pack(side='top', anchor='center', pady=5)
 
-    l8 = tk.Label(root, text="NO PATH SELECTED", font=("Segoe UI", "9"), bg = theme1, fg = theme2)
+    l8 = tk.Label(root, text="NO PATH SELECTED", font=("Segoe UI", "9"), **labe)
     l8.pack(side='top', anchor='center', pady=5)
 
 
@@ -792,7 +797,7 @@ def converter():
                     
 
     
-    b1 = tk.Button(root, text='Convert M3U To Mp3!', command=threading.Thread(target = convert).start, bg = theme3, fg = theme4, font=('helvetica', 9, 'bold'))
+    b1 = tk.Button(root, text='Convert M3U To Mp3!', command=threading.Thread(target = convert).start, **btn)
     b1.pack(side='top', anchor='center', pady=20)
 
     progress1 = tk.IntVar()
@@ -802,10 +807,10 @@ def converter():
     progressl = tk.Label(root, text="Progress : 0.0%", bg = theme1, fg = theme2, font=('Segoe UI', 12))
     progressl.pack(anchor="sw",side=tk.BOTTOM)
 
-    b7 = tk.Button(root, text='Back', command=lambda:[root.destroy(), menu()], bg=theme3, fg=theme4, font=('helvetica', 9, 'bold'), width=10, height=1)
+    b7 = tk.Button(root, text='Back', command=lambda:[root.destroy(), menu()], **back)
     b7.pack(anchor="sw", side=tk.LEFT, padx=5, pady=10)
 
-    l2 = tk.Label(root, text='Made By Geomedge', bg = theme1, fg = theme2)
+    l2 = tk.Label(root, text='Made By Geomedge', **credit_font)
     l2.config(font=('helvetica', 9))
     l2.pack(anchor="se",side=tk.RIGHT, padx=5, pady=10)
 
@@ -822,8 +827,7 @@ def settings():
     setting.title("Settings")
     setting.configure(bg = theme1)
 
-    h1 = tk.Label(setting, text='Settings', bg = theme1, fg = theme2)
-    h1.config(font=(Title))
+    h1 = tk.Label(setting, text='Settings', **title)
     h1.pack(pady=2)
 
     frame = tk.Frame(setting, bg=theme1)
@@ -834,14 +838,14 @@ def settings():
     b2 = tk.Button(frame, text='Colour settings', command=lambda:[colour_settings_menu(), setting.destroy()], **btn)
     b2.grid(row=0, column=1, padx=5, pady=2)
 
-    b3 = tk.Button(frame, text='Change Fonts', command=lambda:[change_font(), setting.destroy()], bg=theme3, fg= theme4, font=(Button_Txt), width=25, height=1)
+    b3 = tk.Button(frame, text='Change Fonts', command=lambda:[change_font(), setting.destroy()], **btn)
     b3.grid(row=1, column=0, padx=5, pady=2)
 
     b4 = tk.Button(frame, text='Uninstall Python Scripts', command=lambda:[confirm(), setting.destroy()], **btn)
     b4.grid(row=1, column=1, padx=5, pady=2)
     frame.pack(side='top', anchor='center')
 
-    b5 = tk.Button(setting, text='Back', command=lambda:[setting.destroy(), menu()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    b5 = tk.Button(setting, text='Back', command=lambda:[setting.destroy(), menu()], **back)
     b5.pack(anchor="sw",side=tk.LEFT, padx=5, pady=10)
 
 
