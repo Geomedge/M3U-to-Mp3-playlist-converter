@@ -714,7 +714,7 @@ def converter():
 
 #LOAD Files
 
-    l2 = tk.Label(root, text='Select M3U File:', font="none 12 bold", **labe)
+    l2 = tk.Label(root, text='Select M3U File:', **labe)
     l2.pack(side='top', anchor='center', pady=5)
 
     def b():
@@ -727,13 +727,13 @@ def converter():
     b3 = tk.Button(root, text='Select File', command=b, **btn)
     b3.pack(side='top', anchor='center', pady=5)
 
-    l5 = tk.Label(root, text="NO PATH SELECTED", font=("Segoe UI", "9"), **labe)
+    l5 = tk.Label(root, text="NO PATH SELECTED", font=("Segoe UI", "9"), bg=theme1, fg=theme2)
     l5.pack(side='top', anchor='center', pady=5)
     
 
 #SAVE Files
 
-    l7 = tk.Label(root, text='Select Where To Save MP3 Files:', font="none 12 bold", **labe)
+    l7 = tk.Label(root, text='Select Where To Save MP3 Files:', **labe)
     l7.pack(side='top', anchor='center', pady=5)
 
     def c():
@@ -746,7 +746,7 @@ def converter():
     b4 = tk.Button(root, text='Select Folder', command=c, **btn)
     b4.pack(side='top', anchor='center', pady=5)
 
-    l8 = tk.Label(root, text="NO PATH SELECTED", font=("Segoe UI", "9"), **labe)
+    l8 = tk.Label(root, text="NO PATH SELECTED", font=("Segoe UI", "9"), bg=theme1, fg=theme2)
     l8.pack(side='top', anchor='center', pady=5)
 
 
