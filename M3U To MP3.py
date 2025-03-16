@@ -666,27 +666,24 @@ def colour_settings():
 def colour_settings_menu():
     colour = tk.Tk()
     colour.eval('tk::PlaceWindow . centre')
-    colour.title("Settings")
+    colour.title("Colour Settings")
     colour.configure(bg = theme1)
-    canvas1 = tk.Canvas(colour, width=400, height=105, relief='raised', bg = theme1, bd=0, highlightthickness=0)
-    canvas1.pack()
 
-    title = tk.Label(colour, text='Settings', bg = theme1, fg = theme2)
-    title.config(font=(Title))
-    canvas1.create_window(200, 25, window=title)
-    
-    label1 = tk.Label(colour, text='Made By Geomedge', bg = theme1, fg = theme2)
-    label1.config(font=(Credits_Txt))
-    canvas1.create_window(340, 125, window=label1)
+    h1 = tk.Label(colour, text='Settings', bg = theme1, fg = theme2)
+    h1.config(font=(Title))
+    h1.pack()
 
-    button1 = tk.Button(colour, text='Preset Colour Settings', command=lambda:[basic_colour_settings(), colour.destroy()], bg=theme3, fg= theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(100, 60, window=button1)
+    frame = tk.Frame(colour, bg=theme1)
 
-    button2 = tk.Button(colour, text='Advanced Colour Settings', command=lambda:[colour_settings(), colour.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(300, 60, window=button2)
+    b1 = tk.Button(frame, text='Preset Colour Settings', command=lambda:[basic_colour_settings(), colour.destroy()], bg=theme3, fg= theme4, font=(Button_Txt), width=25, height=1)
+    b1.grid(row=0, column=0, padx=5, pady=2)
 
-    button7 = tk.Button(colour, text='Back', command=lambda:[colour.destroy(), settings()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
-    canvas1.create_window(48, 90, window=button7)
+    b2 = tk.Button(frame, text='Advanced Colour Settings', command=lambda:[colour_settings(), colour.destroy()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b2.grid(row=0, column=1, padx=5, pady=2)
+    frame.pack(side='top', anchor='center')
+
+    b3 = tk.Button(colour, text='Back', command=lambda:[colour.destroy(), settings()], bg=theme3, fg=theme4, font=(Button_Txt), width=10, height=1)
+    b3.pack(anchor="sw",side=tk.LEFT, padx=5, pady=10)
 
 
 #Themes
