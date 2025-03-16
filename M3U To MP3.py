@@ -691,12 +691,15 @@ def colour_settings_menu():
 
 #Themes
 def theme():
+    #Fixed
     theme_app = tk.Tk()
     theme_app.title("Theme Settings")
     theme_app.eval('tk::PlaceWindow . centre')
+    theme_app.configure(background=theme1)
 
     h1 = tk.Label(theme_app, text='Select Your Theme', bg = theme1, fg = theme2)
     h1.config(font=(Title))
+    h1.pack()
     
     frame = tk.Frame(theme_app, bg=theme1)
 
