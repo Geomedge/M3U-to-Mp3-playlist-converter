@@ -725,7 +725,7 @@ def converter():
     root.eval('tk::PlaceWindow . centre')
     root.title("MP3 Converter")
     root.configure(bg = theme1)
-    root.geometry("600x450")
+    root.minsize(600, 500)
 
     l1 = tk.Label(root, text='MP3 Converter', bg = theme1, fg = theme2)
     l1.config(font=("Segoe UI", "18", "bold"))
@@ -900,38 +900,40 @@ def menu():
     menu.eval('tk::PlaceWindow . centre')
     menu.configure(bg = theme1)
     menu.title("MP3 Converter")
-    canvas1 = tk.Canvas(menu, width=400, height=160, relief='raised', bg = theme1, bd=0, highlightthickness=0)
-    canvas1.pack()
+    menu.minsize(500, 200)
 
-    label1 = tk.Label(menu, text='MP3 Converter By Geomedge', bg = theme1, fg = theme2)
-    label1.config(font=("Segoe UI", "18", "bold"))
-    canvas1.create_window(200, 25, window=label1)
+    l1 = tk.Label(menu, text='MP3 Converter By Geomedge', bg = theme1, fg = theme2)
+    l1.config(font=("Segoe UI", "18", "bold"))
+    l1.pack()
 
-    button1 = tk.Button(menu, text='MP3 Converter', command=lambda:[menu.destroy(), converter()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(100, 60, window=button1)
+    frame = tk.Frame(menu, bg=theme1)
 
-    button2 = tk.Button(menu, text='Settings', command=lambda:[menu.destroy(), settings()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(100, 90, window=button2)
+    b1 = tk.Button(frame, text='MP3 Converter', command=lambda:[menu.destroy(), converter()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b1.grid(row=0, column=0, padx=5, pady=2)
 
-    button3 = tk.Button(menu, text='Changelog', command=lambda:[menu.destroy(), changelog()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(100, 120, window=button3)
+    b2 = tk.Button(frame, text='Settings', command=lambda:[menu.destroy(), settings()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b2.grid(row=0, column=1, padx=5, pady=2)
+
+    b3 = tk.Button(frame, text='Changelog', command=lambda:[menu.destroy(), changelog()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b3.grid(row=1, column=0, padx=5, pady=2)
+
+    b4 = tk.Button(frame, text='Report Bug', command=lambda:[menu.destroy(), bug_report()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b4.grid(row=1, column=1, padx=5, pady=2)
     
-    button4 = tk.Button(menu, text='Report Bug', command=lambda:[menu.destroy(), bug_report()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(300, 60, window=button4)
-    
-    button5 = tk.Button(menu, text='Credits', command=lambda:[menu.destroy(), credit()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(300, 90, window=button5)
+    b5 = tk.Button(frame, text='Credits', command=lambda:[menu.destroy(), credit()], bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b5.grid(row=2, column=0, padx=5, pady=2)
 
-    button6 = tk.Button(menu, text='Quit', command=exit_app, bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
-    canvas1.create_window(300, 120, window=button6)
+    b6 = tk.Button(frame, text='Quit', command=exit_app, bg=theme3, fg=theme4, font=(Button_Txt), width=25, height=1)
+    b6.grid(row=2, column=1, padx=5, pady=2)
+    frame.pack(side='top', anchor='center')
 
-    label2 = tk.Label(menu, text='Made By Geomedge', bg = theme1, fg = theme2)
-    label2.config(font=(Credits_Txt))
-    canvas1.create_window(330, 150, window=label2)
+    l2 = tk.Label(menu, text='Made By Geomedge', bg = theme1, fg = theme2)
+    l2.config(font=(Credits_Txt))
+    l2.pack(anchor="se",side=tk.RIGHT, padx=5, pady=10)
 
-    label3 = tk.Label(menu, text= Version, bg = theme1, fg = theme2)
-    label3.config(font=(Credits_Txt))
-    canvas1.create_window(20, 150, window=label3)
+    l3 = tk.Label(menu, text= Version, bg = theme1, fg = theme2)
+    l3.config(font=(Credits_Txt))
+    l3.pack(anchor="sw",side=tk.LEFT, padx=5, pady=10)
     menu.mainloop()
 
 
