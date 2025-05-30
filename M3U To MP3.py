@@ -10,18 +10,9 @@ import threading
 import re
 from tkinter import filedialog
 import sys
-#Menu GUI
-
-#Getting Rid Of Changelog
-text = """V1.03:
-- Released Program
-
-Thank You For Supporting My Program!
-"""
 
 
 
-#Saves Me The hassle of changing the version number each time separately!
 Version = "V1.03"
 last_update = 'Last Updated : 16/03/2025'
 #Empty Variables
@@ -44,7 +35,7 @@ if existing == True:
     print("Pass", file)
 else:
     os.mkdir(file)
-#Working On Combining Some Of The Files And Removing Changelog
+
 path_end = [r"\Theme.txt",r"\Font.txt"]
 for i in range (len(path_end)):
     path = path_start + path_mid + path_end[i]
@@ -665,7 +656,7 @@ def colour_settings_menu():
     frame.pack(side='top', anchor='center')
 
     b3 = tk.Button(colour, text='Back', command=lambda:[colour.destroy(), settings()], **back)
-    b3.pack(anchor="sw",side=tk.LEFT, padx=5, pady=10)
+    b3.pack(anchor="sw",side=tk.LEFT, padx=5, pady=5)
 
 
 #Themes
@@ -696,7 +687,7 @@ def theme():
     frame.pack(side='top', anchor='center')
 
     b5 = tk.Button(theme_app, text='Back', command=lambda:[settings(), theme_app.destroy()], **back)
-    b5.pack(anchor="sw",side=tk.LEFT, padx=5, pady=10)
+    b5.pack(anchor="sw",side=tk.LEFT, padx=5, pady=5)
 
 
 #MP3 Converter app
@@ -717,7 +708,7 @@ def converter():
 #LOAD Files
 
     l2 = tk.Label(root, text='Select M3U File:', **labe)
-    l2.pack(side='top', anchor='center', pady=5)
+    l2.pack(side='top', anchor='center', pady=2)
 
     def b():
         global file_path
@@ -727,16 +718,16 @@ def converter():
         l5.config(text=text)
         
     b3 = tk.Button(root, text='Select File', command=b, **btn)
-    b3.pack(side='top', anchor='center', pady=5)
+    b3.pack(side='top', anchor='center', pady=2)
 
     l5 = tk.Label(root, text="NO PATH SELECTED", font=("Segoe UI", "9"), bg=theme1, fg=theme2)
-    l5.pack(side='top', anchor='center', pady=5)
+    l5.pack(side='top', anchor='center', pady=2)
     
 
 #SAVE Files
 
     l7 = tk.Label(root, text='Select Where To Save MP3 Files:', **labe)
-    l7.pack(side='top', anchor='center', pady=5)
+    l7.pack(side='top', anchor='center', pady=2)
 
     def c():
         global save_path
@@ -746,10 +737,10 @@ def converter():
         l8.config(text=textl)
         
     b4 = tk.Button(root, text='Select Folder', command=c, **btn)
-    b4.pack(side='top', anchor='center', pady=5)
+    b4.pack(side='top', anchor='center', pady=2)
 
     l8 = tk.Label(root, text="NO PATH SELECTED", font=("Segoe UI", "9"), bg=theme1, fg=theme2)
-    l8.pack(side='top', anchor='center', pady=5)
+    l8.pack(side='top', anchor='center', pady=2)
 
 
 
@@ -810,11 +801,11 @@ def converter():
     progressl.pack(anchor="sw",side=tk.BOTTOM)
 
     b7 = tk.Button(root, text='Back', command=lambda:[root.destroy(), menu()], **back)
-    b7.pack(anchor="sw", side=tk.LEFT, padx=5, pady=10)
+    b7.pack(anchor="sw", side=tk.LEFT, padx=5, pady=5)
 
     l2 = tk.Label(root, text='Made By Geomedge', **credit_font)
     l2.config(font=('helvetica', 9))
-    l2.pack(anchor="se",side=tk.RIGHT, padx=5, pady=10)
+    l2.pack(anchor="se",side=tk.RIGHT, padx=5, pady=5)
 
     root.mainloop()
 
@@ -849,7 +840,7 @@ def settings():
     frame.pack(side='top', anchor='center')
 
     b5 = tk.Button(setting, text='Back', command=lambda:[setting.destroy(), menu()], **back)
-    b5.pack(anchor="sw",side=tk.LEFT, padx=5, pady=10)
+    b5.pack(anchor="sw",side=tk.LEFT, padx=5, pady=5)
 
 
 #Menu
@@ -881,10 +872,10 @@ def menu():
     frame.pack(side='top', anchor='center')
 
     l2 = tk.Label(menu, text='Made By Geomedge', **credit_font)
-    l2.pack(anchor="se",side=tk.RIGHT, padx=5, pady=10)
+    l2.pack(anchor="se",side=tk.RIGHT, padx=5, pady=5)
 
     l3 = tk.Label(menu, text= Version, **credit_font)
-    l3.pack(anchor="sw",side=tk.LEFT, padx=5, pady=10)
+    l3.pack(anchor="sw",side=tk.LEFT, padx=5, pady=5)
     menu.mainloop()
 
 
