@@ -649,6 +649,7 @@ def colour_settings_menu():
     colour.eval('tk::PlaceWindow . centre')
     colour.title("Colour Settings")
     colour.configure(bg = theme1)
+    colour.minsize(500, 150)
 
     h1 = tk.Label(colour, text='Settings', **title)
     
@@ -674,6 +675,7 @@ def theme():
     theme_app.title("Theme Settings")
     theme_app.eval('tk::PlaceWindow . centre')
     theme_app.configure(background=theme1)
+    theme_app.minsize(500, 150)
 
     h1 = tk.Label(theme_app, text='Select Your Theme', **title)
     h1.pack()
@@ -826,6 +828,7 @@ def settings():
     setting.eval('tk::PlaceWindow . centre')
     setting.title("Settings")
     setting.configure(bg = theme1)
+    setting.minsize(500, 150)
 
     h1 = tk.Label(setting, text='Settings', **title)
     h1.pack(pady=2)
