@@ -210,7 +210,7 @@ def mellow():
     message_1("Mellow Theme")
 
 def exit_app():
-    quit()
+    sys.exit()
 
 #Uninstall
 def delete():
@@ -231,32 +231,32 @@ def confirm():
 
 
 def bug_report():
-    confirm = tk.Tk()
-    confirm.eval('tk::PlaceWindow . centre')
-    confirm.title("Bug Fix")
-    canvas1 = tk.Canvas(confirm, width=500, height=200, relief='raised', bg = theme1)
-    canvas1.pack()
+    bug_window = tk.Tk()
+    bug_window.eval('tk::PlaceWindow . centre')
+    bug_window.title("Bug Report")
+    bug_window.minsize(500, 175)
+    bug_window.configure(bg = theme1)
 
-    def callback(url):
-        webbrowser.open_new(url)
+    t1 = tk.Label(bug_window, text='Report Bugs', **title)
+    t1.pack()
 
-    title5 = tk.Label(confirm, text="Discord Server", fg="blue", cursor="hand2")
-    canvas1.create_window(350, 75, window=title5)
-    title6 = tk.Label(confirm, text="Bug Report Form", fg="blue", cursor="hand2")
-    canvas1.create_window(150, 75, window=title6)
-    canvas1.pack()
-    title5.bind("<Button-1>", lambda e: callback("https://discord.gg/QN5HrTAYYs"))
-    title6.bind("<Button-1>", lambda e: callback("https://forms.office.com/r/x7Le5d2bbE"))
-    
-    title = tk.Label(confirm, text='Report Bugs', **labe)
-    canvas1.create_window(250, 25, window=title)
+    t2 = tk.Label(bug_window, text='Select any link below to get started.', **labe)
+    t2.pack()
 
-    title1 = tk.Label(confirm, text='Select any link below to get started.', **labe)
-    
-    canvas1.create_window(250, 50, window=title1)
+    def link1():
+        webbrowser.open_new("https://discord.gg/QN5HrTAYYs")
 
-    button7 = tk.Button(confirm, text='Back', command=lambda:[confirm.destroy(), menu()], **back)
-    canvas1.create_window(50, 175, window=button7)
+    def link2():
+        webbrowser.open_new("https://forms.office.com/r/x7Le5d2bbE")
+
+    b1 = tk.Button(bug_window, text="Discord Server", command=link1, **btn)
+    b1.pack(padx=5, pady=5)
+
+    b2 = tk.Button(bug_window, text="Bug Report Form", command=link2, **btn)
+    b2.pack(padx=5, pady=5)
+
+    button7 = tk.Button(bug_window, text='Back', command=lambda:[bug_window.destroy(), menu()], **back)
+    button7.pack(side="left", anchor="sw", padx=5, pady=5)
 
 
 #Customisation
@@ -875,7 +875,7 @@ def menu():
     b3 = tk.Button(frame, text='Report Bugs', command=lambda:[menu.destroy(), bug_report()], **btn)
     b3.grid(row=1, column=0, padx=5, pady=2)
 
-    b4 = tk.Button(frame, text='Quit', command=exit_app, **btn)
+    b4 = tk.Button(frame, text='Quit', command=lambda:[menu.destroy(),exit_app], **btn)
     b4.grid(row=1, column=1, padx=5, pady=2)
 
     frame.pack(side='top', anchor='center')
