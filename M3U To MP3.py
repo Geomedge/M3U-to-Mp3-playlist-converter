@@ -13,7 +13,7 @@ import sys
 #Menu GUI
 
 #Getting Rid Of Changelog
-text = """V1.0:
+text = """V1.03:
 - Released Program
 
 Thank You For Supporting My Program!
@@ -22,7 +22,7 @@ Thank You For Supporting My Program!
 
 
 #Saves Me The hassle of changing the version number each time separately!
-Version = "V1.02"
+Version = "V1.03"
 last_update = 'Last Updated : 16/03/2025'
 #Empty Variables
 path_list = []
