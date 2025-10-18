@@ -1,6 +1,6 @@
 # M3U To MP3 Converter
 ## Required Packages:
-- SAUIGeo (SAU) : `pip install SAUIGeo`
+- SAUIGeo (SAU) : `pip install SAUIGeo` -> Link https://pypi.org/manage/project/sauigeo/releases/
 ---
 ## Requirements for M3U Converter:
 - Python (3.11+) - (If using Source Code)
