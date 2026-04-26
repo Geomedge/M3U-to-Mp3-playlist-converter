@@ -13,9 +13,9 @@ import sys
 from SAUIGeo import SAU
 
 sauvernr = "1.03.5"
-version = "V1.04.1"
+version = "V1.04.2"
 sauver = "SAU" + str(sauvernr)
-release_date = "05/07/2025"
+release_date = "26/04/2026"
 
 incompatible = []
 path_start = os.path.expanduser("~")
@@ -115,6 +115,7 @@ def converter():
         print(file_path)
         text = "Selected Directory : " + file_path
         l5.config(text=text)
+        messagebox.showinfo("M3U file warning", "Ensure this file is in the correct absolute path.\nCheck Github readme for more info!")
         
     b3 = tk.Button(f1, text='Select File', command=b, **button)
     b3.pack(side='top', anchor='center', pady=2, padx=160)
@@ -122,13 +123,13 @@ def converter():
     l5 = tk.Label(f1, text="NO PATH SELECTED", **cred)
     l5.config(background="#111")
     l5.pack(side='top', anchor='center', pady=2)
-    
+
     f1.pack(side='top', anchor='center', pady=5)
 
 #SAVE Files
     f2 = tk.Frame(root, bg="#111")
 
-    l7 = tk.Label(f2, text='Select Playlist Location:', **default)
+    l7 = tk.Label(f2, text='Select Save Location:', **default)
     l7.pack(side='top', anchor='nw', pady=2)
 
     def c():
@@ -137,8 +138,9 @@ def converter():
         save_path = filedialog.askdirectory(mustexist=True, initialdir=pathload)
         textl = "Selected Directory : " + save_path
         l8.config(text=textl)
+        messagebox.showinfo("Save folder warning", "This folder is to store the final music files not to load them!\nEnsure your folder is empty!")
         
-    b4 = tk.Button(f2, text='Select Folder', command=c, **button)
+    b4 = tk.Button(f2, text='Select Export Folder', command=c, **button)
     b4.pack(side='top', anchor='center', pady=2, padx=150)
 
     l8 = tk.Label(f2, text="NO PATH SELECTED", **cred)
@@ -190,7 +192,10 @@ def converter():
                         line = line + "\n"
                         file.write(line.encode('utf-8', 'ignore'))
                         file.close()
-            messagebox.showinfo("Completed Task!", f"Errors During Completing Task : {errors}")
+            if errors == 0:
+                messagebox.showinfo("Completed Task!", f"Task finished successfully!\nCheck {save_path} for your playlist!")
+            else:
+                messagebox.showinfo("Completed Task!", f"Errors During Completing Task : {errors}\nPlease ensure M3U file is in the correct path and not corrupted!\nCheck '{save_path}/notcopied.txt'")
                     
 
     
