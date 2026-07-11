@@ -1,4 +1,5 @@
 # M3U To MP3 Converter
+Program Retired -> Re-Written C# version
 ## Required Packages:
 - SAUIGeo (SAU) : `pip install SAUIGeo` -> Link https://pypi.org/manage/project/sauigeo/releases/
 ---
